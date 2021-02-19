@@ -1,0 +1,33 @@
+openapi: 3.0.0
+info:
+  description: This is a sample server.
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  title: OpenAPI
+  version: 1.0.0
+servers:
+- url: http://test.eu/
+paths:
+  /putPet:
+    post:
+      operationId: putPet
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pet'
+      responses:
+        "200":
+          description: successful operation
+        "405":
+          description: Invalid input
+components:
+  schemas:
+    Pet:
+      description: A pet for sale in the pet store
+      properties:
+        id:
+          format: int64
+          type: integer
